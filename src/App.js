@@ -1,41 +1,44 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
+import { Chart } from 'primereact/chart';
 
 function App() {
-  const name = "Tam";
-  const age = 22;
-  const isMale = true;
-  const student = {
-    name: "Easy Frontend",
-  };
-  const colorList = ["red", "green", "blue"];
+ const DoughnutChartDemo = () => {
+    const chartData = {
+        labels: ['A', 'B', 'C'],
+        datasets: [
+            {
+                data: [300, 50, 100],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+    };
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello {name} - {age} - {isMale ? "Male" : "Female"}
-        </p>
-        {isMale && (
-          <div>
-            <p>Male</p>
-            <p>Male</p>
-            <p>Male</p>
-          </div>
-        )}
-        {isMale && (
-          <React.Fragment>
-            <p>Male1</p>
-            <p>Male2</p>
-            <p>Male3</p>
-          </React.Fragment>
-        )}
-        <p>{student.name}</p>
-      </header>
-    </div>
-  );
+    const lightOptions = {
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#495057'
+                }
+            }
+        }
+    };
+
+    return (
+        <div className="card flex justify-content-center">
+            <Chart type="doughnut" data={chartData} options={lightOptions} style={{ position: 'relative', width: '40%' }} />
+        </div>
+    )
+}
 }
 
 export default App;
